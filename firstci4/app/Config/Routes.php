@@ -16,5 +16,25 @@ $routes->get('shop', 'Shop::index');
 $routes->get('shop/product/(:any)', 'Shop::product/$1');
 
 // Admin routes
-$routes->get('admin/shop', 'Admin\Shop::index');
-$routes->get('admin/shop/product/(:any)/(:num)', 'Admin\Shop::product/$1/$2');
+$routes->group('admin', function ($routes) {
+    // Admin home
+    $routes->get('/', 'Admin\Home::index');
+
+    // Admin users
+    $routes->get('user', 'Admin\Users::index');
+    $routes->get('users', 'Admin\Users::getAllUser');
+
+    // Admin shop
+    $routes->get('shop', 'Admin\Shop::index');
+    $routes->get('shop/product/(:any)/(:any)', 'Admin\Shop::product/$1/$2');
+
+    // Admin blog
+    $routes->get('blog', 'Admin\Blog::index');
+    $routes->get('blog/create', 'Admin\Blog::create');
+    $routes->post('blog/create', 'Admin\Blog::save');
+});
+
+// Additional routes
+$routes->add('blog', function () {
+    return '<h2>This is the blog page</h2>';
+});
