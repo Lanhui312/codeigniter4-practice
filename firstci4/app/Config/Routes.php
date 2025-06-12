@@ -35,6 +35,6 @@ $routes->group('admin', function ($routes) {
 });
 
 // Additional routes
-$routes->add('blog', function () {
-    return '<h2>This is the blog page</h2>';
-});
+$routes->get('blog', 'Blog::index');
+$routes->get('blog/create', 'Blog::create');
+$routes->post('blog/create', 'Blog::save');
