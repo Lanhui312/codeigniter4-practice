@@ -1,9 +1,18 @@
-<h1><?= $title ?></h1>
-<div>
-    <?php foreach ($posts as $post): ?>
-        <div>
-            <h3><?= $post ?></h3>
-            <img src="<?= base_url('assets/images/image.jpg') ?>" alt="Blog Image" style="width: 100%; height: auto;">
-        </div>
-    <?php endforeach; ?>
+<!DOCTYPE html>
+<html lang="en">
+<div class="container">
+    <h1>Blog Overview</h1>
+    <div class="row">
+        <?php if (empty($posts)): ?>
+            <div class="col-12">
+                <p>No posts available.</p>
+            </div>
+        <?php else: ?>
+            <?php foreach ($posts as $post): ?>
+                <?= view_cell('App\Libraries\Blog::postItems', ['post' => $post]) ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
 </div>
+
+</html>

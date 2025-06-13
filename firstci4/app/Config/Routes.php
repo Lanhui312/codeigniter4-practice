@@ -36,5 +36,5 @@ $routes->group('admin', function ($routes) {
 
 // Additional routes
 $routes->get('blog', 'Blog::index');
-$routes->get('blog/create', 'Blog::create');
-$routes->post('blog/create', 'Blog::save');
+$routes->get('blog/post', 'Blog::post');
+$routes->post('blog/post', 'Blog::save');

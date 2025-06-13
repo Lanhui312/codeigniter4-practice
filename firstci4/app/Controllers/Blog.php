@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 class Blog extends BaseController
 {
@@ -6,7 +8,8 @@ class Blog extends BaseController
     {
         $data  = [
             'meta_title' => 'Blog Home',
-            'title'      => 'This is a Blog Title',
+            'title'      => 'CI4 Blog',
+            'description' => 'Welcome to the CodeIgniter 4 blog. Here you can find various posts and articles.',
         ];
 
         $posts = ['Title 1', 'Title 2', 'Title 3'];
@@ -16,7 +19,7 @@ class Blog extends BaseController
         echo view('templates/footer');
     }
 
-    public function create()
+    public function post()
     {
         $data  = [
             'meta_title' => 'Post Creation',
