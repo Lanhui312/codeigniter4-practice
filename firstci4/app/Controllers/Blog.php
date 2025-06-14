@@ -14,9 +14,8 @@ class Blog extends BaseController
 
         $posts = ['Title 1', 'Title 2', 'Title 3'];
         $data['posts'] = $posts;
-        echo view('templates/header', $data);
-        echo view('blog');
-        echo view('templates/footer');
+
+        return view('blog', $data);
     }
 
     public function post()
@@ -25,9 +24,7 @@ class Blog extends BaseController
             'meta_title' => 'Post Creation',
             'title'      => 'Single Blog Post',
         ];
-        echo view('templates/header', $data);
-        echo view('single_post');
-        echo view('templates/footer');
+        return view('single_post', $data);
     }
 
     public function save()
