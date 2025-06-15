@@ -6,7 +6,7 @@
     <h1><?= $title ?></h1>
     <div class="row">
         <div class="col=12 col-md-8 offset-md-2">
-            <form method="post" action="<?= base_url('blog/new') ?>">
+            <form method="post" action="/firstci4/public/blog/new">
                 <div class="form-group">
                     <label for="post_title">Post Title</label>
                     <input type="text" class="form-control" id="post_title" name="post_title" required>

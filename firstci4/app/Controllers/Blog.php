@@ -37,11 +37,18 @@ class Blog extends BaseController
         ];
 
         if ($this->request->getMethod() === 'post') {
+            header('Content-Type: text/plain');
+            echo '<pre>';
+            print_r($_POST);
+            echo '</pre>';
+
             $model = new BlogModel();
-            $model->save([
-                'post_title'   => $this->request->getPost('post_title'),
-                'post_content' => $this->request->getPost('post_content'),
-            ]);
+            if ($model->save($_POST)) {
+                echo 'Saved successfully';
+            } else {
+                print_r($model->errors());
+            }
+            exit;
         }
         return view('new_post', $data);
     }
