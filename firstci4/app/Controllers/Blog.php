@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\BlogModel;
+
 class Blog extends BaseController
 {
     public function index()
@@ -27,10 +29,20 @@ class Blog extends BaseController
         return view('single_post', $data);
     }
 
-    public function save()
+    public function new()
     {
-        // Here you would typically handle form submission and save the blog post.
-        // For now, we'll just return a success message.
-        return '<h2>Blog post created successfully!</h2>';
+        $data  = [
+            'meta_title' => 'Create New Post',
+            'title'      => 'Create New Blog Post',
+        ];
+
+        if ($this->request->getMethod() === 'post') {
+            $model = new BlogModel();
+            $model->save([
+                'post_title'   => $this->request->getPost('post_title'),
+                'post_content' => $this->request->getPost('post_content'),
+            ]);
+        }
+        return view('new_post', $data);
     }
 }

@@ -37,4 +37,7 @@ $routes->group('admin', function ($routes) {
 // Additional routes
 $routes->get('blog', 'Blog::index');
 $routes->get('blog/post', 'Blog::post');
-$routes->post('blog/post', 'Blog::save');
+$routes->get('blog/new', 'Blog::new');
+$routes->post('blog/new', 'Blog::new');
+
+$routes->match(['get', 'post'], 'test-post', 'TestPostController::create');
